@@ -1,0 +1,300 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{algorithm,algpseudocode}
+\usepackage{algorithm}
+\usepackage{underscore}
+
+
+
+
+
+\title{Hybrid Device-to-Device Communication Framework in Disaster Management System. }
+\author{Sia Chiu Shoon}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The objective of this study was to identify the limitation of current VASNET architecture to be modified to suit with the Internet of Things (IoT) to construct the proposed hybrid framework. The proposed hybrid framework was investigated by using the parameter like packet loss, packet received, delay and energy consumption to examine the proposed hybrid framework on Disaster Management System (DMS) using LTE-A (Long Term Evolution- Advanced) as a communication protocol.
+
+The proposed hybrid framework was implemented through Omnet (version 5.1) with network formation and channel assignment as the purpose to reduce node-to-node or device-to-device interference with computational overhead that affect the proposed hybrid framework. Furthermore, the large bandwidth between device-to-device was the major problem on current VASNET architecture which is this research aims to solve this problem.The study of network formation and channel assignment was further improved by suggesting a backup path to generate the link quality among device-to-device to evaluate the reliability of proposed hybrid framework with LTE-A used on natural disaster or catastrophe occurs.
+
+It was found that packet loss and packet received have the greatest influence when measured over the proposed hybrid framework as well as energy consumption with delay during the implementation stage.The LTE-A was also being introduced to this proposed hybrid framework to communicate among device-to-device through the Middleware (Interface) designed in this framework on Disaster Management System (DMS).
+
+
+Keywords: Hybrid framework, device-to-device, LTE-A, VASNET, IoT
+
+\end{abstract}
+
+\newpage
+
+\section{Introduction}
+In human civilization grown from past until modern era. Natural disaster and catastrophe have become the major issue which sacrifices millions of innocent human life from one decade to another decade. For instance, Richmond Theatre, fire, Virginia (1811) resulted in 72 fatalities that the state of Virginia lost a political leader when the governor was killed in the fire attempting to save his son. San Francisco Earthquake (1906) resulted in the much remarkable building like the Palace Hotel and scientific research laboratories were lost. Thousands of residents and business owners burned down and insurance policies would not cover damage or destruction from an earthquake. Banqiao Dam Flood, China (1975) cause eleven millions of residents were affected by the flood which is the second world’s worse on flood disaster. Nuclear disaster, Chernobyl (1986) resulted in 100 thousands of residents affected and been highly exposed to radiation effects. Apparently, disasters could not be predictable that could be avoided or mitigate by the human. As such, the unpredictability character of disaster and catastrophe force human being to work together to form the disaster rescue team to reduce human casualties. Disaster Management system is being introduced to back up for disaster management operations and aims for promptness in sharing disaster information and providing disaster support. Disaster measures are required comprehensively and systematically to protect local resident life, safety and their property. Disaster management System supports to take efficient disaster measure in all processes. Furthermore, comparing actual conditions with a theoretical model can lead to a better understanding of the current situation and can thus facilitate the planning process and the comprehensive completion of Disaster Management plans [3].  On the others hand, UN office of Disaster Risk Reduction (UNISDR) [4], the financial impact due to natural disaster and man-made disaster is paramount. It is reported that by 2030, the global average of annual losses due to disaster is forecasted to increase and reach 415 billion USD [5]. Consequently, a research on disaster management system has been carried up and increase dynamically that involve a various type of communication technologies which to be deployed accurately during emergency periods in terms of reliability, scalability, and stability to alleviated valuable human life more effectively.
+
+Today the number of hand held devices is drastically increasing with a rising demand for higher data rate applications. These development and wide utilization of wireless communication technologies are extremely suitable to be implemented on disaster management system that provides the most convenience and flexibility to access Internet services and various applications. VASNETs (Vehicular Ad-Hoc Sensor Networks) pave way to the purpose of road safety, high traffic jam and route planning assistance are widely use on human daily life activities. The connection of RSU (Road Side Unit) with vehicles capable to form a network to share any information in any vehicle within particular network coverage. However, due to wireless character, dynamic topology and difficulties in providing the constant connection to the central element [6],communication path between two nodes depends on the mobility factors such as the node’s speed and the direction of movement [7] , it will weaker the VASNETs performance and become the major disadvantage to applying VASNETs network on disaster management system. Furthermore, the breakdown of infrastructures such as broken bridges and roads making the transportation system was paralyzed. A large number of disorganized and misplaced due to the assessment of disasters distribution is virtually blind and inaccurate in an early hours after a big impact of the catastrophes like flood and tsunami [8]. Alternatively, VASNETs network infrastructure must be changed or form a hybrid network infrastructure that overcomes the weak points of VASNETs in disaster management system. 
+The formation of existing VASNETs network infrastructure with IoT (Internet of Things) is a hot topic on wireless networking conducted by many researchers around the world in various applications. LTE (Long Term Evolution) is chosen to be formed with VASNETs as hybrid frameworks that enable device-to-device communication on disaster area. Devices-to-devices communication in cellular networks is defined as direct communication between two mobile users without traversing the Base Station (BS) or core network [9]. The major benefits of LTE typically consist of better throughput, less spectrum utilization, and less energy consumption. LTE capable interest on interoperability that able to function in Apps, OS and platforms which are going to use the device to device functionality can interoperable with each other. Battery life efficiency which is an optimal reaction for the device to device uses system level implementation that no any need for apps or even on the GPS system. The LTE coverage up to 1000 devices in a proximity range of 500 meters above making LTE an ultimately suitable to be used on disaster management system with VASNETs networking [10]. 
+
+Basically, the device to device communication is extremely flexible communication technique compare to existing communication techniques. It can be critical use in natural disasters. In an earthquake or hurricane, an urgent communication network can be setup using Device-to-Device functionality in a short time, replacing the damaged communication network and Internet infrastructure [11]. SC-FDMA (Single Carrier Frequency Division Multiple Access) on an uplink connection which established between the node with the main station that perceives the channel having less inter or intra network interference happen during information sharing interact between node and station. OFDMA (Orthogonal Frequency Division Multiple Access) on the downlink from station to node in conjunction with distributed scheduling for peer discovery, link management and synchronization of timings is a great advantage of this communication protocol [12]. In spite of the numerous benefits offered by the device to device communication, a number of concerns are involved with its implementation. When sharing the same resources, interference between the cellular users and device to device users needs to be controlled. Therefore, is a great challenging to form with current VASNETs networking on disaster management system. The success to hybrid both wireless networking are able to reduce human lives and lessen the human casualties during emergency periods hit by the rapid impact of natural disaster or catastrophe. 
+
+In this paper, it will structure as follows. Section II the literature review on disaster management system, section III studies of the methodology, section IV review the simulation result and evaluation based on section III methodology, section V discuss about the future works on this research and lastly section VI we summarize this paper research to conclude the effectiveness of this framework on disaster management system.   
+
+\section{Literature Review}
+
+Wireless technologies are tremendously increased due to the high demand for higher data rate in this 21st century for human daily activities. As such, authors in [2] present a new enhancement for an emergency and disaster relief system called Critical and Rescue Operations using wearable wireless sensors networks (CROW). During the experiment, the authors use real-time human vital signs (motion data, heartbeat, magnetometer and etc) collected from the on-body sensors which used WBAN (Wireless Body Networks) to push to the IoT platform. Not less of that, authors also examined the off-body and Body-to-Body method by using different communications technologies like Bluetooth IEEE 802.15.1, WiFi IEEE 802.11a/b/g/n, ZigBee IEEE 802.5.4 and WBAN IEEE 802.15.6 [2]. The data collected were pushed to IoT platform that linked to command center for further coordination and instruction to Rescue team on post-disaster scenarios. The system performance was investigated with regards to throughput End-To-End delay and End-To-End link quality estimation during sensing and disseminating data onto the IoT platform. The collected data was transmitted onto the Labeeb-IoT platform using Message Queuing Telemetry Transport (MQTT) protocol [13].This research, the mobility of the nodes are low (>150m) and only capable to establish the optimal performance of the connectionless than 4 hops. The disaster like the tsunami, volcano and earthquake might not be suitable to deploy this system as the network coverage are shorten (WBAN).
+
+VANET (Vehicular Ad-Hoc Networks) was highly demanding due to the major reason for Traffic monitoring especially on peak hours to reduce the traffic density and transmitting any kind of data forms either in a picture or video format if there is any road accident happen. For instance, the authors in [14] introduced a system called Auto-Core that typically consists of Control Software, sensor storage and a software interface to on-board positioning, imaging and telemetry sensors. These systems were deployed on Tamper-Proof Device (TPD) [15], a positioning system such as differential GPS interface for inter-vehicle and vehicle-to-vehicle infrastructure communication. The device also applied for automated parking and enhanced driver night vision respectively. This system will record video with the corresponding vehicle positioning and telemetry data in their TPD during traffic crash or emergency periods. In order to prevent and protect the secret data the integrity of Auto-Core software in vehicles. Authors [14] proposed four types of cryptographic elements used by security infrastructure which is vehicle identifies, Road-Worthiness Certificates, Electronic License Plates and Anonymous Credentials [14].During implementation stages, authors [14]choose ECDSA for most of the signing keys pairs. The public key size of 20 bytes, which results in the signature of 40 bytes and choose the Elliptic Curve Integrated Encryption Scheme (ECIES) [16] for encrypting a car’s identity in the invisible Identity field [7].This shows an automated crash reporting application that provides cryptographically –verifiable evidence of an automobile crash in the form of digital video and telemetry data recorded by vehicle either involved in or at the scene of the crash. The security infrastructure extends the state of the art in VANET security to demonstrate its robustness and efficiency. Author [14] research may not reliable and suitable for disaster involve on heavy flood and tsunami that able to damage and destroy whole system making this method will not effective in rescue the survivors or victims during emergency  situation.
+The importance of emergency response systems cannot be overemphasized today due to the many man-made and natural disaster. Therefore, the authors in [17] leverage Intelligent Transportation system including Vehicular Ad-Hoc networks, mobile and Cloud computing technologies to propose an Intelligent Disaster Management for an urban environment. This system able to gather information from multiple sources and locations including from the point of incident and able to make effective strategies and decisions on communication protocols in order to propagate the information to vehicles and other nodes in real time. The system typically consists of three main layers which is Cloud Infrastructure as a Service layer provides the base platform and environment for the intelligent emergency response system. The Intelligent layer provides the necessary computational models and algorithms in order to devices optimum emergency response strategies by processing of the data available through various sources. The third layer System Interface acquires data from various gateways including the Internet, Transport infrastructure such as roadside masts, mobile smartphones, social networks and etc [18]. The system can be concluded that it was more effective in terms of improving disaster evacuation characteristics and capable to minimize loss of human life, economic costs and disruptions [17]. The weak point of this system is that it needs more testing on the real-time operation and strategy to manage the transport infrastructure during the catastrophe occur.    
+
+When a natural disaster or catastrophe happens. Mostly, it will destroy partially or fully of network infrastructure that gives big impact during emergency periods. WSN (Wireless Sensor Networks) the main roles to reduce human life is a major advantage of the wireless technology which using air as a transmission medium to communicate within the rescue team or trapped survivors. As such, authors [19] introduced a design of the model that is used to incorporate with any disaster management system (Landslide prediction), like military surveillance and emergency response. In order to provide the availability of sensed data of sensor nodes in a critical application like landslide prediction, the fault-tolerant approach [20] [21]has to be followed. The purpose of authors [19]project is to provide efficient Fault Tolerant and energy efficient clustering based on the ARS (Autonomous Reconfiguration System) which organizes the whole network into the smaller cluster to diminish the communication and processing overload. The ARS able to improve the energy efficiency in a WSN. Authors [19]designed a system architecture that consists of Base Station (BS), Clusters, Cluster Head (CH) and Sensor Nodes (SN) with ARS to improve the fault tolerant of the sensor nodes in the zone-based clustering architecture. The networks were organized as clusters to reduce communication overhead [19]. Consequently, the effectiveness of reconfigurations plan by ARS was able to change the setting of local network configuration and effectively identifying reconfiguration plans that improved energy efficiency and the lifetime of WSN [19].Authors [19] needs to do more testing in order to examine the network lifetime efficient transmission and use proposed architecture to different clustering architecture to be deployed with ARS as a future work.
+
+A common protocol and software framework could integrate various devices to form any networks to be used in many applications. For instance, authors [22] developed Code-Blue integrates sensor nodes and others wireless devices into a disaster response setting and provides facilities for Ad-Hoc network formation, resource naming and discovery, security and in-network aggregation of sensor-produced data. Sensor nodes extremely limited communication and computational capabilities exacerbate these challenges [22].This Code-Blue was developed by using two wireless vital sign monitors and PDA-based triage application for first responders. Authors [22] also developed Mote Track a robust radio frequency (RF) based localization system, which let rescuers determine their location within the building and track patients. Code-Blue infrastructure consists of Discovery and naming, Robust routing, Prioritization of Critical data based on IEEE 802.15.4 and ZigBee standard, Security and Tracking device locations used GPS RF signals, ultrasound or some other technique to track patient and rescuer device locations. The Mica 2 mote has been used as Wireless vital sign monitors that having characteristics of 7.3 Hz Atmel Atmega 128 embedded controller with 4 kbytes of RAM and 128 kbytes of ROM. This Mica 2 runs as a specialized operating system called TinyOS to address the sensor nodes concurrency and resource management sensor mote’s limited bandwidth and computational power precludes the use of common Internet protocol and services such as the TCP/IP, DNS and Address Resolution Protocol (ARP). Authors [22] developed vital sign monitors that comprise a pulse oximeter and two-lead electrocardiogram (EKG) monitor [23]. This pulse oximeter captures a patient’s heart rate and blood oxygen saturation (SPO2) by measuring the amount of light transmitted through a non-invasive sensor attached to the patient’s finger [22]. In terms of security, authors [22] exploring Elliptic Curve Cryptography [24] as an alternate public key cryptography scheme. Mica 2 able to generate a key in 35s which far from negligible, is still acceptable to perform key generation. Besides this, authors [22] also developed RF-based location tracking system called Mote Track designed for disaster response. It operates on low-power, single chips radio transceivers found in sensor network nodes that easily wear and embed in wearable vital sign sensors. Mote Track operates in an entirely decentralized, robust fashion, providing good location accuracy despite partial failures of the location-tracking infrastructure. Lastly, Authors [22] need deeper developing the Code-Blue to integrate devices discovery, robust routing, traffic prioritization, security and RF-based location tracking. Therefore, authors [22] have to plan to simulate several deployments and setting in real clinical situation in future.    
+
+One of the challenges of the current Disaster Management infrastructure is that communication can be interrupted, cutting the information flow [25]. There is a lot of research works use cellular networks as a gateway to convey data from disaster location [26] [27]. However, post-catastrophe occurs, rescues team was unable to communicate with survivors due to the habitual destruction in the cellular network and the base stations breakdown [28]. Therefore, Authors [25]introduced a set of Bluetooth beacons covering a physical space, especially buildings. During emergency periods, these beacons send data to mobile devices containing information about evacuation routes and exits. Also, information gathered about the victim’s location and movement. On proposed architecture, 2 types of beacons are considered, the Principal Beacon (PB) and Auxiliary Beacon (AB) in which PB controls a set of ABs. In particular, a PB configures the stream of data to be transmitted by ABs, collect data from their linked Abs and communicate with rescue teams. Bluetooth dongles of Class 1 for guaranteeing a 100m distance link. ABs were low-cost devices that include the necessary elements to manage the communication link with mobile devices and its associated PB [25]. When a disaster alarm was activated, the proposed system switched on. The ABs start tracking Bluetooth devices to establish the communication with them. Several services were offered from the AB side.
+For instance, evacuation routes data information or possibility information exchange in the form of text, images or video. The acceptance of a communication means that the user is alive. Each Bluetooth devices is identified by a unique address, beacons can locate or track users, so PBs can detect and identify movements in breakdown buildings. All information able to transfer to rescue teams and afterward to the Disaster Management Centre [25].
+
+The advantages of this system consist of establishing Ad-Hoc networks using Bluetooth link with standard mobile phones combine with standard protocols. Authors [25] needs to integrate more others type of sensors or wireless sensors and others wireless techniques in order to investigate the proposed system performance for future works.
+
+In a manmade and natural disaster, a flood is one of the major issue and impact on loss of precious lives and destruction of a large amount of property every year, especially in the poor and developing countries, where people are the mercy of natural elements. A lot of effort has been applied in developing the system to minimize the damage through early disaster predictions [29]. Authors [29], introduced WSN system architecture for flood forecasting that typically consists of Sensors to sense and collect the relevant data for calculations which referred to as computational nodes and a manned central monitoring office. Different types of sensors were required to sense water discharge from a dam, rainfall, humidity, temperature and etc. The computational nodes possess powerful CPU’s required to implement the distributed prediction model. The computational nodes were supposed to communicate the prediction results to the monitoring nodes.
+
+The important aspect of this is to minimize the effect of a node failure while connecting the computational nodes to the central. Intermediate nodes (INs) have to be deployed to ensure this connectivity in case the central does not fall within the communication range of all the nodes. The instants at which sensors read data was determined by any one or more of these 4 parameters (Time, Event, Query and System Interrupt) [29]. The advantage of the authors [29] algorithm compares to present models are evident from the comparison with authors in [30] and the simulation results following it. Authors [29] needs to perform more field tests to observe the communication process between the nodes and the real-time implementation of the distributed prediction algorithm on the proposed architecture system.
+
+Vehicle Ad-Hoc Network is designed for its mobility patterns which present unique challenges for discovering routes in the network layers.  Authors [31] proposed the operation rescue using Vehicular Ad-Hoc Network (VANET) with characteristics of Wireless Sensor Network (WSN) for the purpose of Green communication during emergency periods. The Vehicular nodes do perform data transmission and packet routing. The architecture was divided into two levels which consist of the infrastructure level and Ad-Hoc level. The infrastructure level typical comprise of operation rescue unit which located in the cities, a core router with several Road Side Sensors (RSSs) that connected by either fibre optic cables or the backbone from the service provider. The Ad-Hoc level creates the connectivity among vehicular nodes. The On-board Sensors carried by the vehicles provided a short-range wireless communication. The function of sensors is to disseminate the information from other vehicles to the base station via RSS. The RSSs was deployed along the road where it acts as an edge router to the infrastructure level. The RSSs sends and receives the traffic from the vehicular nodes to the base stations of the rescue operation unit. In terms of Green Communication, is much integrate system modelling across the multiple layers of a wireless networking in order to develop an environment for developing new ideas for improving energy efficiency. Intermediate vehicles able to act as routes to determine the optimal path along the way. Traffic is disseminated using the optimal path in providing Green Communication [31]. As a conclusion for authors [31] proposed an architecture system, it contributes directly to the development of Green Communication at an urban area using VASNET. Operation rescue communication provides the opportunity to integrate several technologies in one scenario as it shown on authors [31] works here. Unfortunately, the disadvantages of authors [31] works are definitely cannot apply for the natural disaster like tsunami and volcano that partially or completely destroy the RSSs with core router on an affected area. The proposed system is insufficient to establish the communication connection to be the main core router to contact with rescue unit during post-disaster scene making the authors [31] needs more study to handle this situation. In order to provide Green Communications on aforesaid situation to reduce human casualties.
+
+The all research work due to disaster management system was summaries in below figure~\ref{related-work} in terms of infrastructure, communication and mobility in tabular form.
+
+\begin{center}
+\begin{figure}
+\includegraphics[scale=1]{relatedwork}
+\caption{Summary of the related works compared in terms of infrastructures, communications, and mobility in tabular form.}
+\label{related-work}
+\end{figure}
+\end{center}
+
+\newpage
+Figure~\ref{piechart} shows all the research works based on infrastructure to compare its mobility. From above, majority research works fall into a category of medium mobility (40.0\%) for infrastructure following with high mobility (33.33\%) and least on low mobility (26.67\%) from year interval of 2004 to 2017.
+
+\begin{center}
+\begin{figure}
+\includegraphics[scale=1]{piechart}
+\caption{Summary of the related works compared in terms of infrastructures, communications, and mobility in tabular form.}\label{piechart}
+\end{figure}
+\end{center}
+
+\section{Methodology}
+
+In order to form a hybrid framework to combine VASNET and IoT technologies to be deployed on DMS (Disaster Management System). The limitation and similarity are understudies to obtain the same communication protocol to link both VASNET and IoT, which is called as Middleware. This Middleware able to modify the current structure of VASNET and IoT that capable to be implemented on DMS for the purpose of reducing human casualties in an emergency situation. The interface on Middleware is one of the key rules or pave way to use the same protocol to communicate the VASNET and IoT. In this study, LTE-A (Long Term Evolution-Advanced) was chosen due to some valuable reason such as LTE supports MIMO (Multi-In Multi Out), the higher data rate can be achieved among the network connection. LTE uses SC-FDMA (Single Carrier-Frequency Division Multiple Access) in uplink and hence mobile terminal can have low power during transmission and battery life can be enhanced on the user side. OFDMA (Orthogonal Frequency Division Multiple Access) in downlink, which it utilizes channel resources effectively. This increase total user capacity of the LTE networks as different users utilizes different channel to access the system. Fast downloading files with low latency when the connection on the network gets released faster for each connection. This will decrease the traffic load on the LTE network [32]. 
+
+Current VASNET wireless infrastructure consists of RSU (Road Side Sensor Unit) that cover the entire network, which is unrealistic during the initial deployment of VASNET and inapplicable to emergency communication in disaster condition [19]. Furthermore, transmission of data media files like video conferencing, file dissemination and live media streaming will consume high network bandwidth and overhead computational that serves the huge amount of nodes or users in the certain situation during catastrophe occurs (Multicast). With regards to the VASNET wireless network that equipped with GPS (Global Positioning System) which emphasizes the use of GPS during the natural disaster on Tsunami or heavy flood that survivors are the trap inside the tunnel. The survivors will not be searching or locating as GPS cannot operate in tunnels where there is no direct sight between a GPS receiver and GPS satellites [33].
+
+Consequently, existing VASNET network must modify to suit the appropriate framework using this LTE-A in IoT technology to be implemented on DMS. The proposed framework was illustrated in Fig~\ref{framework} that link the modify VASNET to be connected with IoT technology for database storage in DMS suggested.
+
+\begin{center}
+\begin{figure}[h]
+\includegraphics[scale=.4]{framework}\caption{proposed Framework}\label{framework}
+\end{figure}
+\end{center}
+
+\subsection{Mobile Node Level}
+
+In this proposed framework, VASNET network has been modified to suit the IoT network for the rescue operation. The primary requirement is that we need a dynamic wireless sensor comprises of self-configure, small size, low cost, and low bandwidth to broadcast the signal and also the low power energy consumption to sustain heat and pressure. The high mobility of the nodes, for instance, the vehicle’s moving around the city, makes it unsuitable for the wired infrastructure to be used on this level. Therefore, the dynamic wireless sensor is the most applicable to this situation. Furthermore, the low latency of the signal broadcast plays a major role in this level as the broadcast signal can be reached to the responding team in the shortest possible time in a most effective and accurate way [34].
+
+\subsection{Handover Level}
+
+In this level, the modified high-frequency antenna will receive the signal from every node that attaches with a wireless sensor on the mobile node level. The signal broadcast from wireless sensors to be transmitted on a low signal, low bandwidth and low power consumption for the signal to be transmitted on the wide area to be received by the main station. This transaction will send the signal to be generated by the multi-node to be transmitted to the responding team through the IoT network on wireless network level [34].
+
+\subsection{Wireless Level}
+
+The main key roles of this proposed framework are the wireless network level as the responding team or rescue team receive the signal from the bottom level (Mobile Node Level) through the Handover Level. The signal is uploaded to the Internet through a gateway in which the transmit signal from the main station that converts the data to IoT environment. The inter transaction needs to be taken into account to make sure that no data or signal losses will appear during this conversion. The responding team also able to retrieve any data or information of the survivors through the database storage once it receives the reply from the signal broadcast by the nodes to identify the personal particular of the survivors as fast as possible during the emergency periods, that consists of an ID or IP address on the owner of the nodes. In terms of energy saving or power on any artificial intelligent (AI) devices, smartphones, tablet, and smartwatch are selected to receive the signal transmitted through the modified VASNET network that links with IoT network providing Service Provider on LTE-A network. By using this wireless Internet service, the multi rescue team is able to be linked together upon reaching the signal and track the victims in most accurate on shortest possible rescue time [34].
+
+\subsection{Data Management Level}
+
+In this level, all data will be stored for future analysis and as a record for data storage on the particular event of the disaster or catastrophe occurs. AI devices such as the smartphone, tablet, smartwatch or any handheld devices can transmit the data of any natural disaster events to the main server. The data received by the receiver is transmitted by using the wireless networking like LTE-A from the Service Provider [34]. 
+
+\subsection{Middleware (Interface)}
+
+In recent DMS (Disaster Management System), most of the researches by researchers was due with the wireless networking technologies that using unicast or multicast to some significance of the natural disaster or man-made disaster. In MCMI (Multi-Channel Multi-Interface) are those most advantages compare with other methods. In this method, neighbours nodes try not to share occupying channel to maximize simultaneous packet transmission; when 2 neighbours nodes occupy the same channel, only either of them communicates at a time which is called as the maximize channel distribution. The wireless communications contribute major benefits in multicast of having open communication media “air” showed by all nodes within a communication range as long as the nodes are tuned to the channel. Such an advantage will be gone when facing maximized channel distribution. To cope with this problem, recent researches have proposed top-down and centralized multicasting schemes as centralized approach increases control message overhead and top-down enforcement able to break the balance of other communications [35]. The bottom-top approach is proposed scales up better network environment where various communications co-exist and requires fewer control overheads [36].
+
+In this bottom-up approach study, the proposed network model consists of several mobile nodes each of which is equipped with two wireless interfaces that can be called as interface assignment strategies [37] [38]. One of the interfaces used as a function to receive the data which is called as Fixed Interface. If a node wants to transmit data to another node, it will be tuned to Switchable Interface to the fixed channel of the destination node before transmitting the data. Definitely, if 2 neighbours nodes share the same fixed channel, then the transmitter sends data on its fixed interface.
+
+\subsubsection{Proposed Protocol Operation}
+
+\begin{center}
+\begin{figure}[h]
+\includegraphics[scale=.7]{proposed}
+\caption{Example of protocol operation with 3 channels and 2 interfaces}\label{proposed}
+\end{figure}
+\end{center}
+
+Provided node A has the packet to send to node C through node B. As illustrated in Figure~\ref{proposed}, Nodes A, B, and C have their fixed interfaces assigned as 1, 2 and 3 and switchable interfaces on each of the nodes as 3, 1 and 2 respectively on the initial stage. In the first step, node A switches its switchable interfaces from channel 3 to channel 2 before transmitting the packet to node B on a fixed interface known as channel 2. Node B able to receive the packet after a fixed channel is listening to switchable interface channel 2 on node A. In the second step, node B switches the switchable interface from 1 to 3 as to ready to transmit the packet to node C on fixed interface providing with channel 3. Once the switchable interface is correctly set up during the initial flow, there is no need to switch the interface for the subsequent packets on the flow, unless the switchable interfaces has to switch to others channels for sending packets of a different channel or terminated after the node (survivors and victims’) of the aforesaid node has be rescued by the rescue teams. 
+
+\subsubsection{Proposed Packet Operation}
+
+\begin{center}
+\begin{figure}[h]
+\includegraphics[scale=.7]{interface}
+\caption{A simple description of proposed network Interface}\label{interface}
+\end{figure}
+\end{center}
+
+Figure~\ref{interface} shows an example of data communication in the proposed network Interface that divided to 3 nodes ( X,Y, and Z) and a fixed channel of each node is A, B, and C respectively. Nodes exchange their fixed channel information by periodically broadcasting “Hello” message on all possible channel. By exchanging “Hello” messages, every node capable to check current link quality from each of its neighbours. A node able to estimate the link quality between node by using backward and forward link deliver probability. Every node also includes its neighbour list, the fixed channel of each neighbour and link quality between them in the “Hello” message. As a result, every node is able to have current information about its one-hop and two-hop neighbour.
+
+\newpage
+\begin{center}
+\begin{figure}[t]
+\includegraphics[scale=1]{timing}
+\caption{Proposed Fixed Interface and Switchable Interface Devices to Devices communication}\label{timing}
+\end{figure}
+\end{center}
+
+\subsubsection{Markov Chain}
+
+The Random Walk or Markov Chains is chosen in these proposed mobile nodes level to obey the bottom-up approach. This Markov Chains can be defined as modeling a sequence of dependent events of the next event depend only on the present state of the present node [39].
+
+\begin{center}
+\begin{figure}[h]
+\includegraphics[scale=1]{state}
+\caption{State transition for a sample path}\label{state}
+\end{figure}
+\end{center}
+
+S (Node 0, Node 1, Node 2, Node 3, Node 4)
+
+\begin{equation}
+ S= \{S (Node 0) S (Node 1 \vert Node= 0) S (Node 2\vert Node= 1) S (Node 3\vert Node= 2) S (Node 4\vert Node= 3)\}
+\end{equation}
+
+\begin{equation*}
+=S_{01}S_{12}S_{23}S_{34}  
+\end{equation*}
+
+where S = state
+
+S(Node 0) = Initial state
+                                                                
+\subsubsection{Network Establishing (Multicast)}
+
+When nodes offer the same channel to each other will cause latency that affected by Co-channel interference. Data transmission performance decrease drastically when distance or range for each of the nodes within the network coverage. To cope with this problem, each of the nodes will assign a particular channel appropriate to each of the parent nodes to emphasize the interoperability to generate a link communication between child nodes and parent nodes. The Markov Chains be proposed for such a network by dividing a node to a level consists of the Source node (Rescue Team), parent node, sub-parent node and child nodes. 
+
+According to Markov Chains property, a Source node disseminates multiple time of an advertisement message to every node on disaster area at an initial stage. This message to be relayed by some designated intermediate node, which is chosen among the current sender's one-hop neighbours [36]. A multicast tree is generated while the advertisement message is being disseminated hop by hop. Thus, a node attempt to join the group upon receiving the advertisement message will reply a join message back to the parent node that sent the advertisement message to itself. When a parent node receiving the join message from the child node. It will set the sender node as one of its child nodes and sends a reply message to that particular node. The network establishing formation will proceed as advertisement message keeps disseminate by parent node through the sub-parent node (previously child node) to any nodes nearby to the sub-parent node. When a node reply a join message to more than 1 sender nodes, sender node will compare the child node list on sender nodes to permit the sender node with most child node as a parent node for the nodes sent the join message by reply the message to the join message sent node to form a network topology. Below show the algorithm of network formation.
+
+\newpage
+
+\begin{algorithm}
+\caption{ \emph{Network Formation}}
+\label{algo:first}
+\begin{algorithmic}
+\Require D: Packet inside network
+\Require R: Multicast tree
+\Ensure Partition nodes into different levels; \\ 
+\For{$ \forall~ node~ n \in V (D)$}  
+	\State $S=[v] ~true $      \Comment if and only if v is a multi-node receiver or the source node.
+	\EndFor
+			\For {$ I=level-1$, $I \geqq 1, $I-1$}
+				\STATE $ N_{i} =  node $V_{i} \vert V_{i} as~ level -1 ; $
+			\State $ N_{j} = node~V_{j}~ \vert V_{j}~as~level -1~and~S~[V_{j}] = True; $
+					\While {$S_{j} = \emptyset$}
+					\State $ \textbf{Find}~V_{j1},V_{j2}$  \Comment with the minimum number of parents;
+					\State $ Along~ the ~parents~ of V_{j1}, V_{j2}~find ~note ~N_{p} ~with ~the~ maximum ~number ~of ~child ~node;$ 
+					\State $ S[N_{P}] = true; $
+					\State $ S_{j} = S_{j}- [N_{p}];$
+					\State $ S_{j} = S_{j} - [ the ~child ~node ~of~ N_{p}];$
+					\EndWhile
+				\EndFor
+					\For{$ \forall~ node~ n \in V (D)$}
+					\State $ V(R)= V(R) \cup S\{v\}$  \Comment if and only if S[v] = true;
+				 	\State $ edge ~f = (V,V' subparent);$
+				 	\State $ f (R) = f (R) \cup \{f\};$
+					\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+It will form network hierarchy to construct a network coverage before Channel Assignment begin. Below is the diagram illustrated based on the proposed network establishing formation as mentioned as above.
+
+\begin{center}
+\begin{figure}
+\includegraphics[scale=.7]{hierarchy}
+\caption{Proposed network hierarchy}
+\end{figure}
+\end{center}
+
+\begin{center}
+\begin{figure}
+\includegraphics[scale=.6]{architecture}
+\caption{Proposed network hierarchy architecture}
+\end{figure}
+\end{center}
+
+\newpage
+\subsubsection{Channel Assign Method}
+
+\begin{center}
+\begin{figure}[h]
+\includegraphics[scale=.5]{channel}
+\caption{Proposed Channel Assignment Method}\label{channel}
+\end{figure}
+\end{center}
+
+Figure\ref{channel} shows the proposed Channel Assignment method to assign the channel after Network Establishing stage. Join _ADV broadcast by the source node (Rescue Team) at an initial stage to node A as relaying node will function as Coordinator node (Parent Node) if node IP Address matches one of relaying node addresses in the received Join_ ADV. Node B and Node E will be contributed as Multichannel Coordinator node as an intermediate node who relays Multicast Data to the Child node on multi-hop scenario. The node A (Parent node) broadcast Join _REQ to node B and Node E based on Markov chains property to child node Node C and D (Node B) and Node F and Node G (Node E) for channel assignment on the level child node. When Node C and Node D receives the Join _REQ, it will reply by sending Join_ RPL to Node B and store the reply message from Node C and Node D inside the channel list before sending to the Parent node (Node A) that send the channel list to Source Node. Upon receive the reply message from Node A, Source node will assign the channel based on the channel list received by the sender node (Node A) to assign the channel to Node A and B as channel 1, Node B and C as channel 2 and Node B and D as channel 3 to avoid the Co-Channel Interference during emergency periods. These process will continue for Node E, Node G and Node F once receive the reply message from these nodes through Node A. Therefore, Node A and Node E as channel 4, Node E and F as channel 5 and Node E and Node G as channel 6 as assign  by Source node inside the channel list. This Channel Assignment to all particular node on network coverage is capable to reduce message overhead sending by Source node that locks each of the particular nodes on the particular channel. Below is the Channel Assignment algorithm for the proposed Channel Assignment explained before .
+
+\begin{algorithm}
+\caption{\emph{Channel Assignment formation}}
+\label{algo:second}
+\begin{algorithmic}
+\Require P: current Parent node , J= Join Child node
+\Ensure $ CH_{P} = Fixed ~Channel ~of~ Parent$
+\Ensure $ CH_{J}  = Fixed ~Channel ~of ~Child ~Node$
+\Ensure $ C-list_{p} = Child ~Node ~list ~of ~Parent ~Node$
+\Ensure $ CH-list_{p}  = Channel ~list~ of ~Parent ~Node$\\
+
+\State $ \textbf{OUTPUT} : CH_{Ass} = Fixed ~Channel~ to~ be~ stored~ inside~ channel ~list~ information.$
+
+	\If {$( C-list_{p }= \varnothing)$} {
+		\If{ $(CH_{J} ==CH_{p})$}
+		\State $ CH_{Ass} = One ~of~ the~ Channel~ in ~CH-list_{p} ~instead ~of~ CH_{J};$
+		\Else ~$ CH_{Ass} = CH_{J}$
+		\EndIf}
+		\Else ~$ CH_{Ass} = The ~dominant ~Fixed ~Channel~ in~ C-list_{p}.$
+	\EndIf
+\end{algorithmic}
+\end{algorithm}
+
+\begin{center}
+\begin{figure}[h]
+\includegraphics[scale=.7]{table}
+\caption{Summary of proposed Channel Assignment Packet list}\label{table}
+\end{figure}
+\end{center}
+
+\newpage
+\subsection{Reliability (Multicasting)}
+During the construction of network establishing and channel assignment at an initial stage. We also noticed the side effects of the channel assignment so-called Link Fluctuation problem by the fluctuating link quality that gives the big impact of degradation of the reliability of multicasting [35]. In Figure 14 the wireless connection from Source Node (Node A) to node 3 can be considered as a one-hop route for multicasting during the initial stage. Assume that node 3 is a client for a multicast session. Node 3 receives a child probing message from node A for network construction and channel assignment, then node 3 will set node A as a parent node in one-hop. Node 3 receives multicast data from node A neither node 1 nor node 2. But, if the link quality between node A and node 3 becomes low for some reason, then multicast data sent by node A will not be delivered to node 3 as on figure 14 below [36]. The link quality becomes weak may due to physical characteristics of each channel are various. For instance, characteristic of devices battery (Power) and antenna that may have stronger signal power or higher tolerance against specific interference than others channels [36]. As a result, a wireless link between two neighbouring nodes may be disconnected or become weak after changing their operating channel. To solve this problem, we keep several parent nodes instead of one parent node for a multicast during channel assignment and network construction. Next, the node will receive multicast data from the selected parent node in the list who shows the best link quality between the node.
+
+\begin{center}
+\begin{figure}[t]
+\includegraphics[scale=.8]{reliable}
+\caption{Proposed Reliability control of multicast}\label{reliable}
+\end{figure}
+\end{center}
+
+\subsection{Proposed Framework Sequential Diagram}
+
+\subsubsection{Node Registration}
+The Source Node (Rescue Team) disseminate the Advertisement message and Reply by the Node A through the Interface A and reply the join message to Source Node with IP address of Node A. This IP address of Node A as Parent Node will store inside the database through the IoT Gateway by Source Node.
+
+\subsubsection{Network Discovery Formation and Channel }
+In this stage, Node A as a Parent node will send or broadcast a Join_REQ to next level of a node (Node B) to form a network coverage. Reply from the node (Node B) will be stored inside the main database by Source Node through Parent node (Node A) on the IP address obey with the Markov’s Chains property.
+
+\subsubsection{Location Detection}
+Upon formation of network discovery and channel, the Source node will send location REQ message to fixed channel on the particular node (Node B ) through Parent node ( Node A) to get the actual location of survivors. Message Reply by the survivor's will contains the location of the nodes by the fixed channel that ability to reach to Source Node for any immediate action by Rescue Team. All the transaction message on the fixed channel will be stored on the main database through IoT Service Provider under the LTE-A communication protocol for future reference and data analysis.
+
+\begin{center}
+\begin{figure}[t]
+\includegraphics[scale=.4]{sequential}
+\caption{Proposed Framework Sequential Diagram}\label{sequential}
+\end{figure}
+\end{center}
+
+\end{document}
+
